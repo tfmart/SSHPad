@@ -55,6 +55,7 @@
 		7CA7BEB626D6F1B1003C14CC /* SSHPadUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSHPadUITests.swift; sourceTree = "<group>"; };
 		7CA7BEB826D6F1B1003C14CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CA7BEC526D6F96A003C14CC /* SSHPad-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SSHPad-Bridging-Header.h"; sourceTree = "<group>"; };
+		7CA7BEC826D70F2D003C14CC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A3E00036C925E309783E9606 /* Pods-SSHPad-SSHPadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSHPad-SSHPadUITests.debug.xcconfig"; path = "Target Support Files/Pods-SSHPad-SSHPadUITests/Pods-SSHPad-SSHPadUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A86BD16A1FAC535BC9AF8838 /* Pods_SSHPadTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SSHPadTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF137710F2BA5CB3E6143E69 /* Pods-SSHPad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSHPad.release.xcconfig"; path = "Target Support Files/Pods-SSHPad/Pods-SSHPad.release.xcconfig"; sourceTree = "<group>"; };
@@ -105,6 +106,7 @@
 		7CA7BE8826D6F1B0003C14CC = {
 			isa = PBXGroup;
 			children = (
+				7CA7BEC826D70F2D003C14CC /* README.md */,
 				7CA7BE9326D6F1B0003C14CC /* SSHPad */,
 				7CA7BEAA26D6F1B1003C14CC /* SSHPadTests */,
 				7CA7BEB526D6F1B1003C14CC /* SSHPadUITests */,
