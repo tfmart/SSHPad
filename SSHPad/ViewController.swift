@@ -12,40 +12,29 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-
-    @IBAction func didTapButton(_ sender: Any) {
-        var alert = UIAlertController(title: "Login", message: nil, preferredStyle: .alert)
-        alert.addTextField { textField in
-            textField.placeholder = "Username"
-        }
-        alert.addTextField { textField in
-            textField.placeholder = "IP address"
-        }
-        alert.addTextField { textField in
-            textField.placeholder = "Password"
-            textField.isSecureTextEntry = true
-        }
-        alert.addAction(UIAlertAction(title: "Login", style: .default, handler: { [weak alert] action in
-            let session = NMSSHSession(host: (alert?.textFields![1].text)!, andUsername: (alert?.textFields![0].text)!)
-            session.connect()
-            if session.isConnected {
-                session.authenticate(byPassword: (alert?.textFields![2].text)!)
-                
-                if session.isAuthorized {
-                    print("Authorized!")
-                }
-            }
-            
-            var error: NSError?
-            let response: String = session.channel.execute("osascript Documents/terminal.scpt", error: &error)
-            print(response)
-            session.disconnect()
-        }))
-        self.present(alert, animated: true, completion: nil)
+        self.title = "Scripts"
+        self.view.backgroundColor = .white
+        displayConnectMessage()
     }
     
-
+    func displayConnectMessage() {
+        let button = UIButton()
+        button.setTitle("Get started", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(displaySignInSheet), for: .touchUpInside)
+        self.view.addSubview(button)
+        
+        NSLayoutConstraint.activate([
+            button.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            button.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+        ])
+    }
+    
+    @objc func displaySignInSheet() {
+        let signInViewController = UINavigationController(rootViewController: ConnectViewController())
+        signInViewController.modalPresentationStyle = .formSheet
+        self.present(signInViewController, animated: true, completion: nil)
+    }
 }
 

@@ -13,11 +13,11 @@
 		7CA7BE9526D6F1B0003C14CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BE9426D6F1B0003C14CC /* AppDelegate.swift */; };
 		7CA7BE9726D6F1B0003C14CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BE9626D6F1B0003C14CC /* SceneDelegate.swift */; };
 		7CA7BE9926D6F1B0003C14CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BE9826D6F1B0003C14CC /* ViewController.swift */; };
-		7CA7BE9C26D6F1B0003C14CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CA7BE9A26D6F1B0003C14CC /* Main.storyboard */; };
 		7CA7BE9E26D6F1B1003C14CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CA7BE9D26D6F1B1003C14CC /* Assets.xcassets */; };
 		7CA7BEA126D6F1B1003C14CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CA7BE9F26D6F1B1003C14CC /* LaunchScreen.storyboard */; };
 		7CA7BEAC26D6F1B1003C14CC /* SSHPadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BEAB26D6F1B1003C14CC /* SSHPadTests.swift */; };
 		7CA7BEB726D6F1B1003C14CC /* SSHPadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BEB626D6F1B1003C14CC /* SSHPadUITests.swift */; };
+		7CA7BECA26D71EDA003C14CC /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BEC926D71EDA003C14CC /* ConnectViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +44,6 @@
 		7CA7BE9426D6F1B0003C14CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CA7BE9626D6F1B0003C14CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		7CA7BE9826D6F1B0003C14CC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		7CA7BE9B26D6F1B0003C14CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7CA7BE9D26D6F1B1003C14CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CA7BEA026D6F1B1003C14CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7CA7BEA226D6F1B1003C14CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -56,6 +55,7 @@
 		7CA7BEB826D6F1B1003C14CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CA7BEC526D6F96A003C14CC /* SSHPad-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SSHPad-Bridging-Header.h"; sourceTree = "<group>"; };
 		7CA7BEC826D70F2D003C14CC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		7CA7BEC926D71EDA003C14CC /* ConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
 		A3E00036C925E309783E9606 /* Pods-SSHPad-SSHPadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSHPad-SSHPadUITests.debug.xcconfig"; path = "Target Support Files/Pods-SSHPad-SSHPadUITests/Pods-SSHPad-SSHPadUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A86BD16A1FAC535BC9AF8838 /* Pods_SSHPadTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SSHPadTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF137710F2BA5CB3E6143E69 /* Pods-SSHPad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSHPad.release.xcconfig"; path = "Target Support Files/Pods-SSHPad/Pods-SSHPad.release.xcconfig"; sourceTree = "<group>"; };
@@ -129,14 +129,15 @@
 		7CA7BE9326D6F1B0003C14CC /* SSHPad */ = {
 			isa = PBXGroup;
 			children = (
+				7CA7BECB26D8633B003C14CC /* XIBs */,
 				7CA7BE9426D6F1B0003C14CC /* AppDelegate.swift */,
 				7CA7BE9626D6F1B0003C14CC /* SceneDelegate.swift */,
 				7CA7BE9826D6F1B0003C14CC /* ViewController.swift */,
-				7CA7BE9A26D6F1B0003C14CC /* Main.storyboard */,
 				7CA7BE9D26D6F1B1003C14CC /* Assets.xcassets */,
 				7CA7BE9F26D6F1B1003C14CC /* LaunchScreen.storyboard */,
 				7CA7BEA226D6F1B1003C14CC /* Info.plist */,
 				7CA7BEC526D6F96A003C14CC /* SSHPad-Bridging-Header.h */,
+				7CA7BEC926D71EDA003C14CC /* ConnectViewController.swift */,
 			);
 			path = SSHPad;
 			sourceTree = "<group>";
@@ -157,6 +158,13 @@
 				7CA7BEB826D6F1B1003C14CC /* Info.plist */,
 			);
 			path = SSHPadUITests;
+			sourceTree = "<group>";
+		};
+		7CA7BECB26D8633B003C14CC /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = XIBs;
 			sourceTree = "<group>";
 		};
 		86A89E2332403D3DF595D5D8 /* Pods */ = {
@@ -283,7 +291,6 @@
 			files = (
 				7CA7BEA126D6F1B1003C14CC /* LaunchScreen.storyboard in Resources */,
 				7CA7BE9E26D6F1B1003C14CC /* Assets.xcassets in Resources */,
-				7CA7BE9C26D6F1B0003C14CC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +421,7 @@
 				7CA7BE9926D6F1B0003C14CC /* ViewController.swift in Sources */,
 				7CA7BE9526D6F1B0003C14CC /* AppDelegate.swift in Sources */,
 				7CA7BE9726D6F1B0003C14CC /* SceneDelegate.swift in Sources */,
+				7CA7BECA26D71EDA003C14CC /* ConnectViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,14 +457,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		7CA7BE9A26D6F1B0003C14CC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7CA7BE9B26D6F1B0003C14CC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		7CA7BE9F26D6F1B1003C14CC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
