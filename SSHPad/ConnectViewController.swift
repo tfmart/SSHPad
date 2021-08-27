@@ -19,6 +19,7 @@ class ConnectViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupNavigation()
         self.setupComponents()
         self.setupUI()
     }
@@ -40,10 +41,17 @@ class ConnectViewController: UIViewController {
         session.disconnect()
     }
     
-    func setupComponents() {
+    func setupNavigation() {
         self.title = "Sign in"
         self.view.backgroundColor = .white
-        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(didTapCancel))
+    }
+    
+    @objc func didTapCancel() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    func setupComponents() {
         usernameTextField = UITextField()
         usernameTextField.placeholder = "Username"
         usernameTextField.autocapitalizationType = .none
