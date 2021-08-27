@@ -32,7 +32,7 @@ class ViewController: UIViewController {
     }
     
     @objc func displaySignInSheet() {
-        let signInViewController = UINavigationController(rootViewController: ConnectViewController())
+        let signInViewController = UINavigationController(rootViewController: SignInViewController())
         signInViewController.modalPresentationStyle = .formSheet
         self.present(signInViewController, animated: true, completion: nil)
     }

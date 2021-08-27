@@ -1,5 +1,5 @@
 //
-//  ConnectViewController.swift
+//  SignInViewController.swift
 //  SSHPad
 //
 //  Created by Tomas Martins on 25/08/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ConnectViewController: UIViewController {
+class SignInViewController: UIViewController {
     
     // MARK: - Components
     var stackView: UIStackView!
@@ -16,6 +16,9 @@ class ConnectViewController: UIViewController {
     var ipTextField: UITextField!
     var passwordTextField: UITextField!
     var loginButton: UIButton!
+    
+    // MARK: - Properties
+    var viewModel: SignInViewModel = SignInViewModel()
 
     // MARK: - Lifecycle methods
     override func viewDidLoad() {
@@ -35,28 +38,34 @@ class ConnectViewController: UIViewController {
     func setupComponents() {
         usernameTextField = UITextField()
         usernameTextField.placeholder = "Username"
+        usernameTextField.delegate = viewModel
         usernameTextField.autocapitalizationType = .none
         usernameTextField.autocorrectionType = .no
         usernameTextField.borderStyle = .roundedRect
+        usernameTextField.tag = TextFieldTag.username.rawValue
         usernameTextField.translatesAutoresizingMaskIntoConstraints = false
         
         ipTextField = UITextField()
         ipTextField.placeholder = "IP Address"
+        ipTextField.delegate = viewModel
         ipTextField.keyboardType = .decimalPad
         ipTextField.borderStyle = .roundedRect
+        ipTextField.tag = TextFieldTag.ipAddress.rawValue
         ipTextField.translatesAutoresizingMaskIntoConstraints = false
         
         passwordTextField = UITextField()
         passwordTextField.placeholder = "Password"
+        passwordTextField.delegate = viewModel
         passwordTextField.isSecureTextEntry = true
         passwordTextField.borderStyle = .roundedRect
+        passwordTextField.tag = TextFieldTag.password.rawValue
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         
         loginButton = UIButton()
         loginButton.setTitle("Sign in via SSH", for: .normal)
         loginButton.backgroundColor = UIColor(red: 0.14, green: 0.31, blue: 0.67, alpha: 1.00)
         loginButton.tintColor = .white
-        loginButton.addTarget(self, action: #selector(login), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(didTapSignIn), for: .touchUpInside)
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         
         stackView = UIStackView()
@@ -90,22 +99,8 @@ class ConnectViewController: UIViewController {
         stackView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
     }
     
-    // MARK: - Gesture methods
-    @objc func login() {
-        let session = NMSSHSession(host: ipTextField.text!, andUsername: usernameTextField.text!)
-        session.connect()
-        if session.isConnected {
-            session.authenticate(byPassword: passwordTextField.text!)
-            
-            if session.isAuthorized {
-                print("Authorized!")
-            }
-        }
-        
-        var error: NSError?
-        let response: String = session.channel.execute("osascript Documents/SSHPad/terminal.scpt", error: &error)
-        print(response)
-        session.disconnect()
+    @objc func didTapSignIn() {
+        viewModel.signIn()
     }
     
     @objc func didTapCancel() {

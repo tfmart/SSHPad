@@ -16,10 +16,12 @@
 		7CA7BEB726D6F1B1003C14CC /* SSHPadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BEB626D6F1B1003C14CC /* SSHPadUITests.swift */; };
 		7CA7BED026D87DBC003C14CC /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 7CA7BECF26D87DBC003C14CC /* SwiftKeychainWrapper */; };
 		7CA7BED226D88168003C14CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BE9826D6F1B0003C14CC /* ViewController.swift */; };
-		7CA7BED326D8816C003C14CC /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BEC926D71EDA003C14CC /* ConnectViewController.swift */; };
+		7CA7BED326D8816C003C14CC /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BEC926D71EDA003C14CC /* SignInViewController.swift */; };
 		7CA7BED426D88170003C14CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BE9426D6F1B0003C14CC /* AppDelegate.swift */; };
 		7CA7BED526D88173003C14CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BE9626D6F1B0003C14CC /* SceneDelegate.swift */; };
 		7CA7BED726D8817D003C14CC /* SSHPad-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BEC526D6F96A003C14CC /* SSHPad-Bridging-Header.h */; };
+		7CA7BED926D8834B003C14CC /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BED826D8834B003C14CC /* SignInViewModel.swift */; };
+		7CA7BEDC26D8873D003C14CC /* TextFieldTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BEDB26D8873D003C14CC /* TextFieldTag.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +59,9 @@
 		7CA7BEB826D6F1B1003C14CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CA7BEC526D6F96A003C14CC /* SSHPad-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SSHPad-Bridging-Header.h"; sourceTree = "<group>"; };
 		7CA7BEC826D70F2D003C14CC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		7CA7BEC926D71EDA003C14CC /* ConnectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectViewController.swift; sourceTree = "<group>"; };
+		7CA7BEC926D71EDA003C14CC /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		7CA7BED826D8834B003C14CC /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		7CA7BEDB26D8873D003C14CC /* TextFieldTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTag.swift; sourceTree = "<group>"; };
 		A3E00036C925E309783E9606 /* Pods-SSHPad-SSHPadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSHPad-SSHPadUITests.debug.xcconfig"; path = "Target Support Files/Pods-SSHPad-SSHPadUITests/Pods-SSHPad-SSHPadUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A86BD16A1FAC535BC9AF8838 /* Pods_SSHPadTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SSHPadTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF137710F2BA5CB3E6143E69 /* Pods-SSHPad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSHPad.release.xcconfig"; path = "Target Support Files/Pods-SSHPad/Pods-SSHPad.release.xcconfig"; sourceTree = "<group>"; };
@@ -132,9 +136,11 @@
 		7CA7BE9326D6F1B0003C14CC /* SSHPad */ = {
 			isa = PBXGroup;
 			children = (
+				7CA7BEDA26D88730003C14CC /* Helpers */,
 				7CA7BED126D880A1003C14CC /* Support Files */,
 				7CA7BE9826D6F1B0003C14CC /* ViewController.swift */,
-				7CA7BEC926D71EDA003C14CC /* ConnectViewController.swift */,
+				7CA7BEC926D71EDA003C14CC /* SignInViewController.swift */,
+				7CA7BED826D8834B003C14CC /* SignInViewModel.swift */,
 			);
 			path = SSHPad;
 			sourceTree = "<group>";
@@ -168,6 +174,14 @@
 				7CA7BEA226D6F1B1003C14CC /* Info.plist */,
 			);
 			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		7CA7BEDA26D88730003C14CC /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7CA7BEDB26D8873D003C14CC /* TextFieldTag.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		86A89E2332403D3DF595D5D8 /* Pods */ = {
@@ -429,8 +443,10 @@
 			files = (
 				7CA7BED726D8817D003C14CC /* SSHPad-Bridging-Header.h in Sources */,
 				7CA7BED526D88173003C14CC /* SceneDelegate.swift in Sources */,
+				7CA7BEDC26D8873D003C14CC /* TextFieldTag.swift in Sources */,
+				7CA7BED926D8834B003C14CC /* SignInViewModel.swift in Sources */,
 				7CA7BED426D88170003C14CC /* AppDelegate.swift in Sources */,
-				7CA7BED326D8816C003C14CC /* ConnectViewController.swift in Sources */,
+				7CA7BED326D8816C003C14CC /* SignInViewController.swift in Sources */,
 				7CA7BED226D88168003C14CC /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
