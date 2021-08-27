@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,7 @@
 		7CA7BEAC26D6F1B1003C14CC /* SSHPadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BEAB26D6F1B1003C14CC /* SSHPadTests.swift */; };
 		7CA7BEB726D6F1B1003C14CC /* SSHPadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BEB626D6F1B1003C14CC /* SSHPadUITests.swift */; };
 		7CA7BECA26D71EDA003C14CC /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BEC926D71EDA003C14CC /* ConnectViewController.swift */; };
+		7CA7BED026D87DBC003C14CC /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 7CA7BECF26D87DBC003C14CC /* SwiftKeychainWrapper */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CA7BED026D87DBC003C14CC /* SwiftKeychainWrapper in Frameworks */,
 				1A41FE71AB6227036FF4DB45 /* Pods_SSHPad.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,6 +200,9 @@
 			dependencies = (
 			);
 			name = SSHPad;
+			packageProductDependencies = (
+				7CA7BECF26D87DBC003C14CC /* SwiftKeychainWrapper */,
+			);
 			productName = SSHPad;
 			productReference = 7CA7BE9126D6F1B0003C14CC /* SSHPad.app */;
 			productType = "com.apple.product-type.application";
@@ -273,6 +278,9 @@
 				Base,
 			);
 			mainGroup = 7CA7BE8826D6F1B0003C14CC;
+			packageReferences = (
+				7CA7BECE26D87DBC003C14CC /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
+			);
 			productRefGroup = 7CA7BE9226D6F1B0003C14CC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -762,6 +770,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7CA7BECE26D87DBC003C14CC /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7CA7BECF26D87DBC003C14CC /* SwiftKeychainWrapper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7CA7BECE26D87DBC003C14CC /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
+			productName = SwiftKeychainWrapper;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7CA7BE8926D6F1B0003C14CC /* Project object */;
 }
