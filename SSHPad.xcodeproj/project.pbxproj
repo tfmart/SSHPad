@@ -10,15 +10,16 @@
 		04E0B34B50FBA89E3B1E3085 /* Pods_SSHPadTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A86BD16A1FAC535BC9AF8838 /* Pods_SSHPadTests.framework */; };
 		1A41FE71AB6227036FF4DB45 /* Pods_SSHPad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E7CC1503639CDEB403D305 /* Pods_SSHPad.framework */; };
 		5B1813DBA7326AE02608ACCD /* Pods_SSHPad_SSHPadUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF30336A27BA747D544A5B8 /* Pods_SSHPad_SSHPadUITests.framework */; };
-		7CA7BE9526D6F1B0003C14CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BE9426D6F1B0003C14CC /* AppDelegate.swift */; };
-		7CA7BE9726D6F1B0003C14CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BE9626D6F1B0003C14CC /* SceneDelegate.swift */; };
-		7CA7BE9926D6F1B0003C14CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BE9826D6F1B0003C14CC /* ViewController.swift */; };
 		7CA7BE9E26D6F1B1003C14CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CA7BE9D26D6F1B1003C14CC /* Assets.xcassets */; };
 		7CA7BEA126D6F1B1003C14CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CA7BE9F26D6F1B1003C14CC /* LaunchScreen.storyboard */; };
 		7CA7BEAC26D6F1B1003C14CC /* SSHPadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BEAB26D6F1B1003C14CC /* SSHPadTests.swift */; };
 		7CA7BEB726D6F1B1003C14CC /* SSHPadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BEB626D6F1B1003C14CC /* SSHPadUITests.swift */; };
-		7CA7BECA26D71EDA003C14CC /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BEC926D71EDA003C14CC /* ConnectViewController.swift */; };
 		7CA7BED026D87DBC003C14CC /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 7CA7BECF26D87DBC003C14CC /* SwiftKeychainWrapper */; };
+		7CA7BED226D88168003C14CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BE9826D6F1B0003C14CC /* ViewController.swift */; };
+		7CA7BED326D8816C003C14CC /* ConnectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BEC926D71EDA003C14CC /* ConnectViewController.swift */; };
+		7CA7BED426D88170003C14CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BE9426D6F1B0003C14CC /* AppDelegate.swift */; };
+		7CA7BED526D88173003C14CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BE9626D6F1B0003C14CC /* SceneDelegate.swift */; };
+		7CA7BED726D8817D003C14CC /* SSHPad-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BEC526D6F96A003C14CC /* SSHPad-Bridging-Header.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,14 +132,8 @@
 		7CA7BE9326D6F1B0003C14CC /* SSHPad */ = {
 			isa = PBXGroup;
 			children = (
-				7CA7BECB26D8633B003C14CC /* XIBs */,
-				7CA7BE9426D6F1B0003C14CC /* AppDelegate.swift */,
-				7CA7BE9626D6F1B0003C14CC /* SceneDelegate.swift */,
+				7CA7BED126D880A1003C14CC /* Support Files */,
 				7CA7BE9826D6F1B0003C14CC /* ViewController.swift */,
-				7CA7BE9D26D6F1B1003C14CC /* Assets.xcassets */,
-				7CA7BE9F26D6F1B1003C14CC /* LaunchScreen.storyboard */,
-				7CA7BEA226D6F1B1003C14CC /* Info.plist */,
-				7CA7BEC526D6F96A003C14CC /* SSHPad-Bridging-Header.h */,
 				7CA7BEC926D71EDA003C14CC /* ConnectViewController.swift */,
 			);
 			path = SSHPad;
@@ -162,11 +157,17 @@
 			path = SSHPadUITests;
 			sourceTree = "<group>";
 		};
-		7CA7BECB26D8633B003C14CC /* XIBs */ = {
+		7CA7BED126D880A1003C14CC /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				7CA7BEC526D6F96A003C14CC /* SSHPad-Bridging-Header.h */,
+				7CA7BE9426D6F1B0003C14CC /* AppDelegate.swift */,
+				7CA7BE9626D6F1B0003C14CC /* SceneDelegate.swift */,
+				7CA7BE9D26D6F1B1003C14CC /* Assets.xcassets */,
+				7CA7BE9F26D6F1B1003C14CC /* LaunchScreen.storyboard */,
+				7CA7BEA226D6F1B1003C14CC /* Info.plist */,
 			);
-			path = XIBs;
+			path = "Support Files";
 			sourceTree = "<group>";
 		};
 		86A89E2332403D3DF595D5D8 /* Pods */ = {
@@ -426,10 +427,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CA7BE9926D6F1B0003C14CC /* ViewController.swift in Sources */,
-				7CA7BE9526D6F1B0003C14CC /* AppDelegate.swift in Sources */,
-				7CA7BE9726D6F1B0003C14CC /* SceneDelegate.swift in Sources */,
-				7CA7BECA26D71EDA003C14CC /* ConnectViewController.swift in Sources */,
+				7CA7BED726D8817D003C14CC /* SSHPad-Bridging-Header.h in Sources */,
+				7CA7BED526D88173003C14CC /* SceneDelegate.swift in Sources */,
+				7CA7BED426D88170003C14CC /* AppDelegate.swift in Sources */,
+				7CA7BED326D8816C003C14CC /* ConnectViewController.swift in Sources */,
+				7CA7BED226D88168003C14CC /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,7 +606,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZTGHLM6H83;
-				INFOPLIST_FILE = SSHPad/Info.plist;
+				INFOPLIST_FILE = "SSHPad/Support Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -612,7 +614,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = tfmartins.SSHPad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SSHPad/SSHPad-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "SSHPad/Support Files/SSHPad-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -628,7 +630,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZTGHLM6H83;
-				INFOPLIST_FILE = SSHPad/Info.plist;
+				INFOPLIST_FILE = "SSHPad/Support Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -636,7 +638,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = tfmartins.SSHPad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SSHPad/SSHPad-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "SSHPad/Support Files/SSHPad-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
