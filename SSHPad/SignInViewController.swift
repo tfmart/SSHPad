@@ -100,6 +100,7 @@ class SignInViewController: UIViewController {
     }
     
     @objc func didTapSignIn() {
+        self.view.endEditing(true)
         viewModel.signIn()
     }
     
