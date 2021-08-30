@@ -14,6 +14,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Scripts"
         self.view.backgroundColor = .white
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+        }
         displayConnectMessage()
     }
     

@@ -10,6 +10,7 @@
 		04E0B34B50FBA89E3B1E3085 /* Pods_SSHPadTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A86BD16A1FAC535BC9AF8838 /* Pods_SSHPadTests.framework */; };
 		1A41FE71AB6227036FF4DB45 /* Pods_SSHPad.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66E7CC1503639CDEB403D305 /* Pods_SSHPad.framework */; };
 		5B1813DBA7326AE02608ACCD /* Pods_SSHPad_SSHPadUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDF30336A27BA747D544A5B8 /* Pods_SSHPad_SSHPadUITests.framework */; };
+		7C52DF2926DC49EF009ED602 /* AlertDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C52DF2826DC49EF009ED602 /* AlertDelegate.swift */; };
 		7CA7BE9E26D6F1B1003C14CC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CA7BE9D26D6F1B1003C14CC /* Assets.xcassets */; };
 		7CA7BEA126D6F1B1003C14CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CA7BE9F26D6F1B1003C14CC /* LaunchScreen.storyboard */; };
 		7CA7BEAC26D6F1B1003C14CC /* SSHPadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BEAB26D6F1B1003C14CC /* SSHPadTests.swift */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		66E7CC1503639CDEB403D305 /* Pods_SSHPad.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SSHPad.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		799467A062862F846825F07B /* Pods-SSHPadTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSHPadTests.debug.xcconfig"; path = "Target Support Files/Pods-SSHPadTests/Pods-SSHPadTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7C52DF2826DC49EF009ED602 /* AlertDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDelegate.swift; sourceTree = "<group>"; };
 		7CA7BE9126D6F1B0003C14CC /* SSHPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSHPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CA7BE9426D6F1B0003C14CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CA7BE9626D6F1B0003C14CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				7CA7BEDB26D8873D003C14CC /* TextFieldTag.swift */,
+				7C52DF2826DC49EF009ED602 /* AlertDelegate.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CA7BED726D8817D003C14CC /* SSHPad-Bridging-Header.h in Sources */,
+				7C52DF2926DC49EF009ED602 /* AlertDelegate.swift in Sources */,
 				7CA7BED526D88173003C14CC /* SceneDelegate.swift in Sources */,
 				7CA7BEDC26D8873D003C14CC /* TextFieldTag.swift in Sources */,
 				7CA7BED926D8834B003C14CC /* SignInViewModel.swift in Sources */,
