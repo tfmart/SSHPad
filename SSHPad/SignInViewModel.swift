@@ -67,14 +67,14 @@ public class SignInViewModel: NSObject {
     }
     
     private func offerToCreateDirectory() {
-        alertDelegate?.displayAlert(title: "Could not find scripts", message: "We could not find the SSHPad Scripts directory on the connected device. Would you like to create the directory?", actionTitle: "Create", handler: createDirectory(alert:))
+        alertDelegate?.displayAlert(title: "Could not find scripts", message: "Could not locate the SSHPad Scripts directory on the host device. Would you like to create the directory?", actionTitle: "Create", handler: createDirectory(alert:))
     }
     
     private func createDirectory(alert: UIAlertAction) {
         var createDirError: NSError?
         _ = session.channel.execute("mkdir ~/Documents/SSHPad\\ Scripts", error: &createDirError)
         guard createDirError == nil else {
-            alertDelegate?.displayAlert(title: "Something went wrong", message: "Could not create the directory")
+            alertDelegate?.displayAlert(title: "Something went wrong", message: "Could not create the scripts directory")
             session.disconnect()
             return
         }
