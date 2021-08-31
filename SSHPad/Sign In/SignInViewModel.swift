@@ -66,7 +66,9 @@ public class SignInViewModel: NSObject {
         let response: String = session.channel.execute("if [ -d ~/Documents/SSHPad\\ Scripts ]\nthen\necho \"dir present\"\nelse\necho \"dir not present\"\nfi", error: &error)
         switch response.replacingOccurrences(of: "\n", with: "") {
         case "dir present":
-            alertDelegate?.displayAlert(title: "Success", message: "Found SSHPad Scripts directory", action: nil)
+            alertDelegate?.displayAlert(title: "Success", message: "Found SSHPad Scripts directory", action: { _ in
+                self.delegate?.dismiss(didSucceed: true)
+            })
             session.disconnect()
         case "dir not present":
             offerToCreateDirectory()
@@ -87,7 +89,7 @@ public class SignInViewModel: NSObject {
             session.disconnect()
             return
         }
-        alertDelegate?.displayAlert(title: "Directory created successfully", message: "Now add your scripts in the added directory, which is located at:\n\n~/Documents/SSHPad Scripts", action: {_ in
+        alertDelegate?.displayAlert(title: "Directory created successfully", message: "Now add your scripts in the added directory, which is located at:\n\n~/Documents/SSHPad Scripts", action: { _ in
             self.delegate?.dismiss(didSucceed: true)
         })
         session.disconnect()

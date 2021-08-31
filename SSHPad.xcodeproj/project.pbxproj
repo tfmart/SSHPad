@@ -16,7 +16,7 @@
 		7CA7BEA126D6F1B1003C14CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CA7BE9F26D6F1B1003C14CC /* LaunchScreen.storyboard */; };
 		7CA7BEAC26D6F1B1003C14CC /* SSHPadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BEAB26D6F1B1003C14CC /* SSHPadTests.swift */; };
 		7CA7BEB726D6F1B1003C14CC /* SSHPadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BEB626D6F1B1003C14CC /* SSHPadUITests.swift */; };
-		7CA7BED226D88168003C14CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BE9826D6F1B0003C14CC /* ViewController.swift */; };
+		7CA7BED226D88168003C14CC /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BE9826D6F1B0003C14CC /* GalleryViewController.swift */; };
 		7CA7BED326D8816C003C14CC /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BEC926D71EDA003C14CC /* SignInViewController.swift */; };
 		7CA7BED426D88170003C14CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BE9426D6F1B0003C14CC /* AppDelegate.swift */; };
 		7CA7BED526D88173003C14CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BE9626D6F1B0003C14CC /* SceneDelegate.swift */; };
@@ -26,6 +26,7 @@
 		7CFCA07F26DDA11900A450CF /* KeychainConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFCA07E26DDA11900A450CF /* KeychainConstants.swift */; };
 		7CFCA08126DDA28000A450CF /* KeychainOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFCA08026DDA28000A450CF /* KeychainOperations.swift */; };
 		7CFCA08426DDAC6900A450CF /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFCA08326DDAC6900A450CF /* KeychainWrapper.swift */; };
+		7CFCA08726DDC0AB00A450CF /* GalleryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFCA08626DDC0AB00A450CF /* GalleryViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +54,7 @@
 		7CA7BE9126D6F1B0003C14CC /* SSHPad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SSHPad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CA7BE9426D6F1B0003C14CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CA7BE9626D6F1B0003C14CC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7CA7BE9826D6F1B0003C14CC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7CA7BE9826D6F1B0003C14CC /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
 		7CA7BE9D26D6F1B1003C14CC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CA7BEA026D6F1B1003C14CC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7CA7BEA226D6F1B1003C14CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -71,6 +72,7 @@
 		7CFCA07E26DDA11900A450CF /* KeychainConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainConstants.swift; sourceTree = "<group>"; };
 		7CFCA08026DDA28000A450CF /* KeychainOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainOperations.swift; sourceTree = "<group>"; };
 		7CFCA08326DDAC6900A450CF /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		7CFCA08626DDC0AB00A450CF /* GalleryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewModel.swift; sourceTree = "<group>"; };
 		A3E00036C925E309783E9606 /* Pods-SSHPad-SSHPadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSHPad-SSHPadUITests.debug.xcconfig"; path = "Target Support Files/Pods-SSHPad-SSHPadUITests/Pods-SSHPad-SSHPadUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A86BD16A1FAC535BC9AF8838 /* Pods_SSHPadTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SSHPadTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF137710F2BA5CB3E6143E69 /* Pods-SSHPad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSHPad.release.xcconfig"; path = "Target Support Files/Pods-SSHPad/Pods-SSHPad.release.xcconfig"; sourceTree = "<group>"; };
@@ -154,11 +156,11 @@
 		7CA7BE9326D6F1B0003C14CC /* SSHPad */ = {
 			isa = PBXGroup;
 			children = (
+				7CFCA08526DDC09900A450CF /* Gallery */,
 				7C52DF2A26DD0DBC009ED602 /* Sign In */,
 				7CFCA07A26DDA0EC00A450CF /* Keychain */,
 				7CA7BEDA26D88730003C14CC /* Helpers */,
 				7CA7BED126D880A1003C14CC /* Support Files */,
-				7CA7BE9826D6F1B0003C14CC /* ViewController.swift */,
 			);
 			path = SSHPad;
 			sourceTree = "<group>";
@@ -235,6 +237,15 @@
 				7CFCA08026DDA28000A450CF /* KeychainOperations.swift */,
 			);
 			path = Operations;
+			sourceTree = "<group>";
+		};
+		7CFCA08526DDC09900A450CF /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				7CA7BE9826D6F1B0003C14CC /* GalleryViewController.swift */,
+				7CFCA08626DDC0AB00A450CF /* GalleryViewModel.swift */,
+			);
+			path = Gallery;
 			sourceTree = "<group>";
 		};
 		86A89E2332403D3DF595D5D8 /* Pods */ = {
@@ -500,9 +511,10 @@
 				7CA7BED526D88173003C14CC /* SceneDelegate.swift in Sources */,
 				7CA7BEDC26D8873D003C14CC /* TextFieldTag.swift in Sources */,
 				7CA7BED926D8834B003C14CC /* SignInViewModel.swift in Sources */,
+				7CFCA08726DDC0AB00A450CF /* GalleryViewModel.swift in Sources */,
 				7CA7BED426D88170003C14CC /* AppDelegate.swift in Sources */,
 				7CA7BED326D8816C003C14CC /* SignInViewController.swift in Sources */,
-				7CA7BED226D88168003C14CC /* ViewController.swift in Sources */,
+				7CA7BED226D88168003C14CC /* GalleryViewController.swift in Sources */,
 				7CFCA08126DDA28000A450CF /* KeychainOperations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -113,7 +113,7 @@ class SignInViewController: UIViewController {
 
 extension SignInViewController: SignInDelegate {
     func dismiss(didSucceed: Bool) {
-        if let presentingViewController = presentingViewController as? ViewController {
+        if let presentingViewController = (presentingViewController as? UINavigationController)?.viewControllers.first as? GalleryViewController {
             presentingViewController.didSucceed = didSucceed
         }
         self.dismiss(animated: true, completion: nil)

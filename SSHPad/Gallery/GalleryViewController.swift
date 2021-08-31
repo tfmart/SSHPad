@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  GalleryViewController.swift
 //  SSHPad
 //
 //  Created by Tomas Martins on 25/08/21.
@@ -8,10 +8,11 @@
 import UIKit
 import NMSSH
 
-class ViewController: UIViewController {
+class GalleryViewController: UIViewController {
     
     var didSucceed: Bool = false {
         didSet {
+            view.subviews.forEach({ $0.removeFromSuperview() })
             if didSucceed {
                 displaySuccessMessage()
             } else {
@@ -45,14 +46,14 @@ class ViewController: UIViewController {
     }
     
     func displaySuccessMessage() {
-        let label = UILabel()
-        label.text = "Connected"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(label)
+        let progressView = UIActivityIndicatorView(style: .gray)
+        progressView.startAnimating()
+        progressView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(progressView)
         
         NSLayoutConstraint.activate([
-            label.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+            progressView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            progressView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
         ])
     }
     
