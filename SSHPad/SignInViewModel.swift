@@ -7,7 +7,7 @@
 
 import Foundation
 import NMSSH
-import SwiftKeychainWrapper
+
 
 public class SignInViewModel: NSObject {
     var username: String?
@@ -25,9 +25,17 @@ public class SignInViewModel: NSObject {
             return
         }
         
-        KeychainWrapper.standard.set(username, forKey: "username")
-        KeychainWrapper.standard.set(ipAddress, forKey: "ipAddress")
-        KeychainWrapper.standard.set(password, forKey: "password")
+        let values: [String: String] = [
+            "username": username,
+            "ipAddress": ipAddress,
+            "password": password
+        ]
+        
+        do {
+            try KeychainWrapper.set(values: values)
+        } catch {
+            //handle error
+        }
     }
     
     public func signIn() {

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,7 +15,6 @@
 		7CA7BEA126D6F1B1003C14CC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CA7BE9F26D6F1B1003C14CC /* LaunchScreen.storyboard */; };
 		7CA7BEAC26D6F1B1003C14CC /* SSHPadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BEAB26D6F1B1003C14CC /* SSHPadTests.swift */; };
 		7CA7BEB726D6F1B1003C14CC /* SSHPadUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BEB626D6F1B1003C14CC /* SSHPadUITests.swift */; };
-		7CA7BED026D87DBC003C14CC /* SwiftKeychainWrapper in Frameworks */ = {isa = PBXBuildFile; productRef = 7CA7BECF26D87DBC003C14CC /* SwiftKeychainWrapper */; };
 		7CA7BED226D88168003C14CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BE9826D6F1B0003C14CC /* ViewController.swift */; };
 		7CA7BED326D8816C003C14CC /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BEC926D71EDA003C14CC /* SignInViewController.swift */; };
 		7CA7BED426D88170003C14CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BE9426D6F1B0003C14CC /* AppDelegate.swift */; };
@@ -23,6 +22,9 @@
 		7CA7BED726D8817D003C14CC /* SSHPad-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BEC526D6F96A003C14CC /* SSHPad-Bridging-Header.h */; };
 		7CA7BED926D8834B003C14CC /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BED826D8834B003C14CC /* SignInViewModel.swift */; };
 		7CA7BEDC26D8873D003C14CC /* TextFieldTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BEDB26D8873D003C14CC /* TextFieldTag.swift */; };
+		7CFCA07F26DDA11900A450CF /* KeychainConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFCA07E26DDA11900A450CF /* KeychainConstants.swift */; };
+		7CFCA08126DDA28000A450CF /* KeychainOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFCA08026DDA28000A450CF /* KeychainOperations.swift */; };
+		7CFCA08426DDAC6900A450CF /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFCA08326DDAC6900A450CF /* KeychainWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,9 @@
 		7CA7BEC926D71EDA003C14CC /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		7CA7BED826D8834B003C14CC /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		7CA7BEDB26D8873D003C14CC /* TextFieldTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTag.swift; sourceTree = "<group>"; };
+		7CFCA07E26DDA11900A450CF /* KeychainConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainConstants.swift; sourceTree = "<group>"; };
+		7CFCA08026DDA28000A450CF /* KeychainOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainOperations.swift; sourceTree = "<group>"; };
+		7CFCA08326DDAC6900A450CF /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		A3E00036C925E309783E9606 /* Pods-SSHPad-SSHPadUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSHPad-SSHPadUITests.debug.xcconfig"; path = "Target Support Files/Pods-SSHPad-SSHPadUITests/Pods-SSHPad-SSHPadUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		A86BD16A1FAC535BC9AF8838 /* Pods_SSHPadTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SSHPadTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF137710F2BA5CB3E6143E69 /* Pods-SSHPad.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SSHPad.release.xcconfig"; path = "Target Support Files/Pods-SSHPad/Pods-SSHPad.release.xcconfig"; sourceTree = "<group>"; };
@@ -78,7 +83,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CA7BED026D87DBC003C14CC /* SwiftKeychainWrapper in Frameworks */,
 				1A41FE71AB6227036FF4DB45 /* Pods_SSHPad.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -138,6 +142,7 @@
 		7CA7BE9326D6F1B0003C14CC /* SSHPad */ = {
 			isa = PBXGroup;
 			children = (
+				7CFCA07A26DDA0EC00A450CF /* Keychain */,
 				7CA7BEDA26D88730003C14CC /* Helpers */,
 				7CA7BED126D880A1003C14CC /* Support Files */,
 				7CA7BE9826D6F1B0003C14CC /* ViewController.swift */,
@@ -187,6 +192,40 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		7CFCA07A26DDA0EC00A450CF /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				7CFCA07B26DDA0F200A450CF /* Constants */,
+				7CFCA07D26DDA10100A450CF /* Operations */,
+				7CFCA07C26DDA0F600A450CF /* Wrapper */,
+			);
+			path = Keychain;
+			sourceTree = "<group>";
+		};
+		7CFCA07B26DDA0F200A450CF /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				7CFCA07E26DDA11900A450CF /* KeychainConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		7CFCA07C26DDA0F600A450CF /* Wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				7CFCA08326DDAC6900A450CF /* KeychainWrapper.swift */,
+			);
+			path = Wrapper;
+			sourceTree = "<group>";
+		};
+		7CFCA07D26DDA10100A450CF /* Operations */ = {
+			isa = PBXGroup;
+			children = (
+				7CFCA08026DDA28000A450CF /* KeychainOperations.swift */,
+			);
+			path = Operations;
+			sourceTree = "<group>";
+		};
 		86A89E2332403D3DF595D5D8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,7 +258,6 @@
 			);
 			name = SSHPad;
 			packageProductDependencies = (
-				7CA7BECF26D87DBC003C14CC /* SwiftKeychainWrapper */,
 			);
 			productName = SSHPad;
 			productReference = 7CA7BE9126D6F1B0003C14CC /* SSHPad.app */;
@@ -297,7 +335,6 @@
 			);
 			mainGroup = 7CA7BE8826D6F1B0003C14CC;
 			packageReferences = (
-				7CA7BECE26D87DBC003C14CC /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */,
 			);
 			productRefGroup = 7CA7BE9226D6F1B0003C14CC /* Products */;
 			projectDirPath = "";
@@ -444,14 +481,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7CFCA07F26DDA11900A450CF /* KeychainConstants.swift in Sources */,
 				7CA7BED726D8817D003C14CC /* SSHPad-Bridging-Header.h in Sources */,
 				7C52DF2926DC49EF009ED602 /* AlertDelegate.swift in Sources */,
+				7CFCA08426DDAC6900A450CF /* KeychainWrapper.swift in Sources */,
 				7CA7BED526D88173003C14CC /* SceneDelegate.swift in Sources */,
 				7CA7BEDC26D8873D003C14CC /* TextFieldTag.swift in Sources */,
 				7CA7BED926D8834B003C14CC /* SignInViewModel.swift in Sources */,
 				7CA7BED426D88170003C14CC /* AppDelegate.swift in Sources */,
 				7CA7BED326D8816C003C14CC /* SignInViewController.swift in Sources */,
 				7CA7BED226D88168003C14CC /* ViewController.swift in Sources */,
+				7CFCA08126DDA28000A450CF /* KeychainOperations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -792,25 +832,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		7CA7BECE26D87DBC003C14CC /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/jrendel/SwiftKeychainWrapper";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		7CA7BECF26D87DBC003C14CC /* SwiftKeychainWrapper */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7CA7BECE26D87DBC003C14CC /* XCRemoteSwiftPackageReference "SwiftKeychainWrapper" */;
-			productName = SwiftKeychainWrapper;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7CA7BE8926D6F1B0003C14CC /* Project object */;
 }
