@@ -15,6 +15,7 @@ public class SignInViewModel: NSObject {
     var password: String?
     
     private var session: NMSSHSession!
+    weak var delegate: SignInDelegate?
     weak var alertDelegate: AlertDelegate?
     
     private func storeCredetials() {
@@ -49,13 +50,13 @@ public class SignInViewModel: NSObject {
         session = NMSSHSession(host: ipAddress, andUsername: username)
         session.connect()
         guard session.isConnected else {
-            //Failed to connect to host
+            alertDelegate?.displayAlert(title: "Could not connect to host", message: "Make sure you're connected to the internet on both this and the host device", action: nil)
             return
         }
         
         session.authenticate(byPassword: password)
         guard session.isAuthorized else {
-            //Password is invalid
+            alertDelegate?.displayAlert(title: "Incorrect Password", message: "Make sure your credentials are correct", action: nil)
             return
         }
         
@@ -65,7 +66,7 @@ public class SignInViewModel: NSObject {
         let response: String = session.channel.execute("if [ -d ~/Documents/SSHPad\\ Scripts ]\nthen\necho \"dir present\"\nelse\necho \"dir not present\"\nfi", error: &error)
         switch response.replacingOccurrences(of: "\n", with: "") {
         case "dir present":
-            alertDelegate?.displayAlert(title: "Success", message: "Found SSHPad Scripts directory")
+            alertDelegate?.displayAlert(title: "Success", message: "Found SSHPad Scripts directory", action: nil)
             session.disconnect()
         case "dir not present":
             offerToCreateDirectory()
@@ -82,11 +83,13 @@ public class SignInViewModel: NSObject {
         var createDirError: NSError?
         _ = session.channel.execute("mkdir ~/Documents/SSHPad\\ Scripts", error: &createDirError)
         guard createDirError == nil else {
-            alertDelegate?.displayAlert(title: "Something went wrong", message: "Could not create the scripts directory")
+            alertDelegate?.displayAlert(title: "Something went wrong", message: "Could not create the scripts directory", action: nil)
             session.disconnect()
             return
         }
-        alertDelegate?.displayAlert(title: "Directory created successfully", message: "Now add your scripts in the added directory, which is located at:\n\n~/Documents/SSHPad Scripts")
+        alertDelegate?.displayAlert(title: "Directory created successfully", message: "Now add your scripts in the added directory, which is located at:\n\n~/Documents/SSHPad Scripts", action: {_ in
+            self.delegate?.dismiss(didSucceed: true)
+        })
         session.disconnect()
     }
 }

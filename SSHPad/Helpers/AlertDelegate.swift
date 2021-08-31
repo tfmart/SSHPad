@@ -8,14 +8,14 @@
 import Foundation
 
 public protocol AlertDelegate: AnyObject {
-    func displayAlert(title: String?, message: String?)
+    func displayAlert(title: String?, message: String?, action: ((UIAlertAction) -> Void)?)
     func displayAlert(title: String?, message: String?, actionTitle: String?, handler: ((UIAlertAction) -> Void)?)
 }
 
 extension UIViewController: AlertDelegate {
-    public func displayAlert(title: String?, message: String?) {
+    public func displayAlert(title: String?, message: String?, action: ((UIAlertAction) -> Void)?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: action))
         self.present(alert, animated: true, completion: nil)
     }
     

@@ -23,6 +23,7 @@ class SignInViewController: UIViewController {
     // MARK: - Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.delegate = self
         viewModel.alertDelegate = self
         self.setupNavigation()
         self.setupComponents()
@@ -106,6 +107,15 @@ class SignInViewController: UIViewController {
     }
     
     @objc func didTapCancel() {
+        self.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension SignInViewController: SignInDelegate {
+    func dismiss(didSucceed: Bool) {
+        if let presentingViewController = presentingViewController as? ViewController {
+            presentingViewController.didSucceed = didSucceed
+        }
         self.dismiss(animated: true, completion: nil)
     }
 }

@@ -9,6 +9,16 @@ import UIKit
 import NMSSH
 
 class ViewController: UIViewController {
+    
+    var didSucceed: Bool = false {
+        didSet {
+            if didSucceed {
+                displaySuccessMessage()
+            } else {
+                displayConnectMessage()
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +27,7 @@ class ViewController: UIViewController {
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
         }
-        displayConnectMessage()
+        didSucceed = false
     }
     
     func displayConnectMessage() {
@@ -31,6 +41,18 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([
             button.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             button.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+        ])
+    }
+    
+    func displaySuccessMessage() {
+        let label = UILabel()
+        label.text = "Connected"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(label)
+        
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
         ])
     }
     
