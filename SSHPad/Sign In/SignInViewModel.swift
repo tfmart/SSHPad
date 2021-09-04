@@ -40,10 +40,12 @@ public class SignInViewModel: NSObject {
     }
     
     public func signIn() {
+        delegate?.showLoading()
         guard let username =  username,
               let ipAddress = ipAddress,
               let password = password else {
             // One of the fields are empty
+            delegate?.hideLoading()
             return
         }
         
@@ -51,12 +53,14 @@ public class SignInViewModel: NSObject {
         session.connect()
         guard session.isConnected else {
             alertDelegate?.displayAlert(title: "Could not connect to host", message: "Make sure you're connected to the internet on both this and the host device", action: nil)
+            delegate?.hideLoading()
             return
         }
         
         session.authenticate(byPassword: password)
         guard session.isAuthorized else {
             alertDelegate?.displayAlert(title: "Incorrect Password", message: "Make sure your credentials are correct", action: nil)
+            delegate?.hideLoading()
             return
         }
         
@@ -64,6 +68,7 @@ public class SignInViewModel: NSObject {
         
         var error: NSError?
         let response: String = session.channel.execute("if [ -d ~/Documents/SSHPad\\ Scripts ]\nthen\necho \"dir present\"\nelse\necho \"dir not present\"\nfi", error: &error)
+        delegate?.hideLoading()
         switch response.replacingOccurrences(of: "\n", with: "") {
         case "dir present":
             alertDelegate?.displayAlert(title: "Success", message: "Found SSHPad Scripts directory", action: { _ in

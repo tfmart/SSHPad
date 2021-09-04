@@ -10,6 +10,9 @@ import NMSSH
 
 class GalleryViewController: UIViewController {
     
+    var scriptsCollectionView: UICollectionView!
+    var viewModel = GalleryViewModel()
+    
     var didSucceed: Bool = false {
         didSet {
             view.subviews.forEach({ $0.removeFromSuperview() })
@@ -28,13 +31,18 @@ class GalleryViewController: UIViewController {
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
         }
-        didSucceed = false
+
+        if viewModel.isSignedIn {
+            viewModel.fetchScripts()
+            displaySuccessMessage()
+        } else {
+            displayConnectMessage()
+        }
     }
     
     func displayConnectMessage() {
-        let button = UIButton()
+        let button = UIButton(type: .roundedRect)
         button.setTitle("Get started", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(displaySignInSheet), for: .touchUpInside)
         self.view.addSubview(button)

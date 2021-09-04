@@ -8,5 +8,7 @@
 import Foundation
 
 public protocol SignInDelegate: AnyObject {
+    func showLoading()
+    func hideLoading()
     func dismiss(didSucceed: Bool)
 }

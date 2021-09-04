@@ -15,7 +15,7 @@ class SignInViewController: UIViewController {
     var usernameTextField: UITextField!
     var ipTextField: UITextField!
     var passwordTextField: UITextField!
-    var loginButton: UIButton!
+    var loginButton: UILoadingButton!
     
     // MARK: - Properties
     var viewModel: SignInViewModel = SignInViewModel()
@@ -63,10 +63,8 @@ class SignInViewController: UIViewController {
         passwordTextField.tag = TextFieldTag.password.rawValue
         passwordTextField.translatesAutoresizingMaskIntoConstraints = false
         
-        loginButton = UIButton()
+        loginButton = UILoadingButton(type: .roundedRect)
         loginButton.setTitle("Sign in via SSH", for: .normal)
-        loginButton.backgroundColor = UIColor(red: 0.14, green: 0.31, blue: 0.67, alpha: 1.00)
-        loginButton.tintColor = .white
         loginButton.addTarget(self, action: #selector(didTapSignIn), for: .touchUpInside)
         loginButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -112,6 +110,14 @@ class SignInViewController: UIViewController {
 }
 
 extension SignInViewController: SignInDelegate {
+    func showLoading() {
+        self.loginButton.startLoading()
+    }
+    
+    func hideLoading() {
+        self.loginButton.stopLoading()
+    }
+    
     func dismiss(didSucceed: Bool) {
         if let presentingViewController = (presentingViewController as? UINavigationController)?.viewControllers.first as? GalleryViewController {
             presentingViewController.didSucceed = didSucceed
