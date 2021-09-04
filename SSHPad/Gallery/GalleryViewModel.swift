@@ -12,7 +12,7 @@ let scriptsDirectory = "~/Documents/SSHPad\\ Scripts"
 
 class GalleryViewModel: NSObject {
     var session: NMSSHSession?
-    public var scripts: [String] = []
+    private var scripts: [String] = []
     
     public var connectionStatus: ConnectionStatus? {
         didSet {
@@ -30,6 +30,17 @@ class GalleryViewModel: NSObject {
         }
         scripts = response.components(separatedBy: "\n").filter({ !$0.isEmpty })
         print(scripts)
+    }
+    
+    public func script(for row: Int) -> String? {
+        guard row < amount else { return nil }
+        return scripts[row]
+    }
+    
+    public func didSelect(at row: Int) {
+        guard let session = session else { return }
+        var runScriptError: NSError?
+        session.channel.execute("osascript \(scriptsDirectory)/\(scripts[row])", error: &runScriptError)
     }
     
     public func signOut() {
@@ -52,6 +63,10 @@ extension GalleryViewModel {
         }
         session?.authenticate(byPassword: credential)
         return session?.isAuthorized ?? false
+    }
+    
+    public var amount: Int {
+        return scripts.count
     }
 }
 

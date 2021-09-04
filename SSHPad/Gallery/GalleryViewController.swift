@@ -17,7 +17,9 @@ class GalleryViewController: UIViewController {
         didSet {
             view.subviews.forEach({ $0.removeFromSuperview() })
             if didSucceed {
-                displaySuccessMessage()
+                viewModel.fetchScripts()
+                setupComponents()
+                setupUI()
             } else {
                 displayConnectMessage()
             }
@@ -28,15 +30,17 @@ class GalleryViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Scripts"
         self.view.backgroundColor = .white
-        if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.prefersLargeTitles = true
-        }
-
+        
         if viewModel.isSignedIn {
             viewModel.fetchScripts()
-            displaySuccessMessage()
+            setupComponents()
+            setupUI()
         } else {
             displayConnectMessage()
+        }
+        
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
         }
     }
     
@@ -69,6 +73,44 @@ class GalleryViewController: UIViewController {
         let signInViewController = UINavigationController(rootViewController: SignInViewController())
         signInViewController.modalPresentationStyle = .formSheet
         self.present(signInViewController, animated: true, completion: nil)
+    }
+    
+    private func setupComponents() {
+        self.scriptsCollectionView = UICollectionView.init(frame: .zero, collectionViewLayout: GalleryCollectionViewLayout(sectionInset: UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)))
+        self.scriptsCollectionView.dataSource = self
+        self.scriptsCollectionView.delegate = self
+        self.scriptsCollectionView.register(ScriptCollectionViewCell.self, forCellWithReuseIdentifier: "script")
+        if #available(iOS 11.0, *) {
+            scriptsCollectionView?.contentInsetAdjustmentBehavior = .always
+        }
+        scriptsCollectionView.backgroundColor = .white
+        scriptsCollectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
+        scriptsCollectionView.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    func setupUI() {
+        self.view.addSubview(scriptsCollectionView)
+        scriptsCollectionView.topAnchor.constraint(equalTo: self.topLayoutGuide.bottomAnchor).isActive = true
+        scriptsCollectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        scriptsCollectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        scriptsCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+    }
+}
+
+extension GalleryViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return viewModel.amount
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "script", for: indexPath) as? ScriptCollectionViewCell
+        cell!.title = viewModel.script(for: indexPath.row)
+        cell!.backgroundColor = UIColor.orange
+        return cell!
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.didSelect(at: indexPath.row)
     }
 }
 
