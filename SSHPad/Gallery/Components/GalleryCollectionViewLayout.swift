@@ -10,7 +10,10 @@ import UIKit
 class GalleryCollectionViewLayout: UICollectionViewFlowLayout {
     let cellsPerRow: Int
     
-    init(cellsPerRow: Int = 5, minimumInteritemSpacing: CGFloat = 10, minimumLineSpacing: CGFloat = 10, sectionInset: UIEdgeInsets = .zero) {
+    init(cellsPerRow: Int = 5,
+         minimumInteritemSpacing: CGFloat = 10,
+         minimumLineSpacing: CGFloat = 10,
+         sectionInset: UIEdgeInsets = .zero) {
         self.cellsPerRow = cellsPerRow
         super.init()
         

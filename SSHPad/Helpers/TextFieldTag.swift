@@ -10,5 +10,5 @@ import Foundation
 enum TextFieldTag: Int {
     case username
     case password
-    case ipAddress
+    case host
 }

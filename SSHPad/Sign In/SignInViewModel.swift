@@ -11,7 +11,7 @@ import NMSSH
 
 public class SignInViewModel: NSObject {
     var username: String?
-    var ipAddress: String?
+    var host: String?
     var password: String?
     
     private var session: NMSSHSession!
@@ -20,7 +20,7 @@ public class SignInViewModel: NSObject {
     
     private func storeCredetials() {
         guard let username =  username,
-              let ipAddress = ipAddress,
+              let host = host,
               let password = password else {
             // Could log in but information was nil
             return
@@ -28,7 +28,7 @@ public class SignInViewModel: NSObject {
         
         let values: [String: String] = [
             "username": username,
-            "ipAddress": ipAddress,
+            "host": host,
             "password": password
         ]
         
@@ -42,14 +42,14 @@ public class SignInViewModel: NSObject {
     public func signIn() {
         delegate?.showLoading()
         guard let username =  username,
-              let ipAddress = ipAddress,
+              let host = host,
               let password = password else {
             // One of the fields are empty
             delegate?.hideLoading()
             return
         }
         
-        session = NMSSHSession(host: ipAddress, andUsername: username)
+        session = NMSSHSession(host: host, andUsername: username)
         session.connect()
         guard session.isConnected else {
             alertDelegate?.displayAlert(title: "Could not connect to host", message: "Make sure you're connected to the internet on both this and the host device", action: nil)
@@ -106,7 +106,7 @@ extension SignInViewModel: UITextFieldDelegate {
         guard let tag = TextFieldTag(rawValue: textField.tag) else { return }
         switch tag {
         case .username: username = textField.text
-        case .ipAddress: ipAddress = textField.text
+        case .host: host = textField.text
         case .password: password = textField.text
         }
     }

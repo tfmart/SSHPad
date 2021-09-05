@@ -12,13 +12,10 @@ let scriptsDirectory = "~/Documents/SSHPad\\ Scripts"
 
 class GalleryViewModel: NSObject {
     var session: NMSSHSession?
-    private var scripts: [String] = []
+    weak var delegate: GalleryDelegate?
+    weak var alertDelegate: AlertDelegate?
     
-    public var connectionStatus: ConnectionStatus? {
-        didSet {
-            // setup view according to status
-        }
-    }
+    private var scripts: [String] = []
     
     public func fetchScripts() {
         var error: NSError?
@@ -50,19 +47,23 @@ class GalleryViewModel: NSObject {
 
 // MARK: - Public properties
 extension GalleryViewModel {
-    public var isSignedIn: Bool {
+    public func signIn() throws {
         guard let username = self.username,
               let credential = self.credential,
-              let ipAddres = self.ipAddres else {
-            return false
+              let host = self.host else {
+            throw SPError.noCredentials
         }
-        session = NMSSHSession(host: ipAddres, andUsername: username)
+        session = NMSSHSession(host: host, andUsername: username)
         session?.connect()
         guard let isConnected = session?.isConnected, isConnected else {
-            return false
+            alertDelegate?.displayAlert(title: "Could not connect to host", message: "Make sure both this device and the host are connected to your network", action: nil)
+            throw SPError.noConnection
         }
         session?.authenticate(byPassword: credential)
-        return session?.isAuthorized ?? false
+        guard let isAuthorized = session?.isAuthorized, isAuthorized else {
+            alertDelegate?.displayAlert(title: "Invalid credentials", message: "Could not connect with the current credentials. Please sign-in again", action: nil)
+            throw SPError.notAuthorized
+        }
     }
     
     public var amount: Int {
@@ -76,8 +77,8 @@ extension GalleryViewModel {
         return try? KeychainWrapper.read(from: "username")
     }
     
-    private var ipAddres: String? {
-        return try? KeychainWrapper.read(from: "ipAddress")
+    private var host: String? {
+        return try? KeychainWrapper.read(from: "host")
     }
     
     private var credential: String? {

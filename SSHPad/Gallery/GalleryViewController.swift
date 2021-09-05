@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import NMSSH
 
 class GalleryViewController: UIViewController {
     
@@ -31,12 +30,18 @@ class GalleryViewController: UIViewController {
     }
     
     func checkSession() {
-        if viewModel.isSignedIn {
-            viewModel.fetchScripts()
+        do {
+            try viewModel.signIn()
             setupComponents()
             setupUI()
-        } else {
-            displayConnectMessage()
+        } catch {
+            guard let spError = error as? SPError else {
+                return
+            }
+            switch spError {
+            case .noCredentials: displayConnectMessage()
+            case .noConnection, .notAuthorized: displayMessage(with: spError)
+            }
         }
     }
     
@@ -50,6 +55,18 @@ class GalleryViewController: UIViewController {
         NSLayoutConstraint.activate([
             button.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             button.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+        ])
+    }
+    
+    func displayMessage(with error: SPError) {
+        let label = UILabel()
+        label.text = error.message
+        label.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(label)
+        
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
         ])
     }
     

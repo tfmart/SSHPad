@@ -13,7 +13,7 @@ class SignInViewController: UIViewController {
     var stackView: UIStackView!
     var fieldsStackView: UIStackView!
     var usernameTextField: UITextField!
-    var ipTextField: UITextField!
+    var hostTextField: UITextField!
     var passwordTextField: UITextField!
     var loginButton: UILoadingButton!
     
@@ -47,13 +47,13 @@ class SignInViewController: UIViewController {
         usernameTextField.tag = TextFieldTag.username.rawValue
         usernameTextField.translatesAutoresizingMaskIntoConstraints = false
         
-        ipTextField = UITextField()
-        ipTextField.placeholder = "IP Address"
-        ipTextField.delegate = viewModel
-        ipTextField.keyboardType = .decimalPad
-        ipTextField.borderStyle = .roundedRect
-        ipTextField.tag = TextFieldTag.ipAddress.rawValue
-        ipTextField.translatesAutoresizingMaskIntoConstraints = false
+        hostTextField = UITextField()
+        hostTextField.placeholder = "Host"
+        hostTextField.delegate = viewModel
+        hostTextField.keyboardType = .decimalPad
+        hostTextField.borderStyle = .roundedRect
+        hostTextField.tag = TextFieldTag.host.rawValue
+        hostTextField.translatesAutoresizingMaskIntoConstraints = false
         
         passwordTextField = UITextField()
         passwordTextField.placeholder = "Password"
@@ -87,7 +87,7 @@ class SignInViewController: UIViewController {
     
     func setupUI() {
         fieldsStackView.addArrangedSubview(usernameTextField)
-        fieldsStackView.addArrangedSubview(ipTextField)
+        fieldsStackView.addArrangedSubview(hostTextField)
         fieldsStackView.addArrangedSubview(passwordTextField)
         stackView.addArrangedSubview(fieldsStackView)
         stackView.addArrangedSubview(loginButton)
