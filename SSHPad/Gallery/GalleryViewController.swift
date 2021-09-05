@@ -16,13 +16,7 @@ class GalleryViewController: UIViewController {
     var didSucceed: Bool = false {
         didSet {
             view.subviews.forEach({ $0.removeFromSuperview() })
-            if didSucceed {
-                viewModel.fetchScripts()
-                setupComponents()
-                setupUI()
-            } else {
-                displayConnectMessage()
-            }
+            checkSession()
         }
     }
 
@@ -30,17 +24,19 @@ class GalleryViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Scripts"
         self.view.backgroundColor = .white
-        
+        checkSession()
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+        }
+    }
+    
+    func checkSession() {
         if viewModel.isSignedIn {
             viewModel.fetchScripts()
             setupComponents()
             setupUI()
         } else {
             displayConnectMessage()
-        }
-        
-        if #available(iOS 11.0, *) {
-            navigationController?.navigationBar.prefersLargeTitles = true
         }
     }
     
@@ -54,18 +50,6 @@ class GalleryViewController: UIViewController {
         NSLayoutConstraint.activate([
             button.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             button.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
-        ])
-    }
-    
-    func displaySuccessMessage() {
-        let progressView = UIActivityIndicatorView(style: .gray)
-        progressView.startAnimating()
-        progressView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(progressView)
-        
-        NSLayoutConstraint.activate([
-            progressView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            progressView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
         ])
     }
     
