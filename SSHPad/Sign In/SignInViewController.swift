@@ -50,7 +50,6 @@ class SignInViewController: UIViewController {
         hostTextField = UITextField()
         hostTextField.placeholder = "Host"
         hostTextField.delegate = viewModel
-        hostTextField.keyboardType = .decimalPad
         hostTextField.borderStyle = .roundedRect
         hostTextField.tag = TextFieldTag.host.rawValue
         hostTextField.translatesAutoresizingMaskIntoConstraints = false
