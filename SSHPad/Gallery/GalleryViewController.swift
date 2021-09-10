@@ -22,7 +22,7 @@ class GalleryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Scripts"
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .primaryBackground
         checkSession()
         if #available(iOS 11.0, *) {
             navigationController?.navigationBar.prefersLargeTitles = true
@@ -32,6 +32,7 @@ class GalleryViewController: UIViewController {
     func checkSession() {
         do {
             try viewModel.signIn()
+            viewModel.fetchScripts()
             setupComponents()
             setupUI()
         } catch {
@@ -84,7 +85,7 @@ class GalleryViewController: UIViewController {
         if #available(iOS 11.0, *) {
             scriptsCollectionView?.contentInsetAdjustmentBehavior = .always
         }
-        scriptsCollectionView.backgroundColor = .white
+        scriptsCollectionView.backgroundColor = .primaryBackground
         scriptsCollectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "Cell")
         scriptsCollectionView.translatesAutoresizingMaskIntoConstraints = false
     }

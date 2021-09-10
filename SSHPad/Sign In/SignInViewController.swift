@@ -33,7 +33,7 @@ class SignInViewController: UIViewController {
     // MARK: - UI Setup methods
     func setupNavigation() {
         self.title = "Sign in"
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .primaryBackground
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(didTapCancel))
     }
     
