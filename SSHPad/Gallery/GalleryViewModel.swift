@@ -15,7 +15,7 @@ class GalleryViewModel: NSObject {
     weak var delegate: GalleryDelegate?
     weak var alertDelegate: AlertDelegate?
     
-    private var scripts: [String] = []
+    private var scripts: [Script] = []
     
     public func fetchScripts() {
         var error: NSError?
@@ -25,11 +25,12 @@ class GalleryViewModel: NSObject {
             //handle error
             return
         }
-        scripts = response.components(separatedBy: "\n").filter({ !$0.isEmpty })
+        let files = response.components(separatedBy: "\n").filter({ !$0.isEmpty })
+        files.forEach({ scripts.append(Script(name: $0, fileName: $0, image: nil))})
         print(scripts)
     }
     
-    public func script(for row: Int) -> String? {
+    public func script(for row: Int) -> Script? {
         guard row < amount else { return nil }
         return scripts[row]
     }
@@ -37,7 +38,7 @@ class GalleryViewModel: NSObject {
     public func didSelect(at row: Int) {
         guard let session = session else { return }
         var runScriptError: NSError?
-        session.channel.execute("osascript \(scriptsDirectory)/\(scripts[row])", error: &runScriptError)
+        session.channel.execute("osascript \(scriptsDirectory)/\(scripts[row].fileName)", error: &runScriptError)
     }
     
     public func signOut() {

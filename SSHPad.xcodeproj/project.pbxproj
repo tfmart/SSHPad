@@ -24,6 +24,7 @@
 		7CA7BED726D8817D003C14CC /* SSHPad-Bridging-Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BEC526D6F96A003C14CC /* SSHPad-Bridging-Header.h */; };
 		7CA7BED926D8834B003C14CC /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BED826D8834B003C14CC /* SignInViewModel.swift */; };
 		7CA7BEDC26D8873D003C14CC /* TextFieldTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CA7BEDB26D8873D003C14CC /* TextFieldTag.swift */; };
+		7CBBF6C126F75480002B47F8 /* Script.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBBF6C026F75480002B47F8 /* Script.swift */; };
 		7CFCA07F26DDA11900A450CF /* KeychainConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFCA07E26DDA11900A450CF /* KeychainConstants.swift */; };
 		7CFCA08126DDA28000A450CF /* KeychainOperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFCA08026DDA28000A450CF /* KeychainOperations.swift */; };
 		7CFCA08426DDAC6900A450CF /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CFCA08326DDAC6900A450CF /* KeychainWrapper.swift */; };
@@ -76,6 +77,7 @@
 		7CA7BEC926D71EDA003C14CC /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		7CA7BED826D8834B003C14CC /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		7CA7BEDB26D8873D003C14CC /* TextFieldTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldTag.swift; sourceTree = "<group>"; };
+		7CBBF6C026F75480002B47F8 /* Script.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Script.swift; sourceTree = "<group>"; };
 		7CFCA07E26DDA11900A450CF /* KeychainConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainConstants.swift; sourceTree = "<group>"; };
 		7CFCA08026DDA28000A450CF /* KeychainOperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainOperations.swift; sourceTree = "<group>"; };
 		7CFCA08326DDAC6900A450CF /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 		7CA7BE9326D6F1B0003C14CC /* SSHPad */ = {
 			isa = PBXGroup;
 			children = (
+				7CBBF6BE26F7546B002B47F8 /* Model */,
 				7CFCA08826DDD13000A450CF /* Components */,
 				7CFCA08526DDC09900A450CF /* Gallery */,
 				7C52DF2A26DD0DBC009ED602 /* Sign In */,
@@ -226,6 +229,14 @@
 				7CFCA08B26E2F65700A450CF /* SPError.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		7CBBF6BE26F7546B002B47F8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7CBBF6C026F75480002B47F8 /* Script.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		7CFCA07A26DDA0EC00A450CF /* Keychain */ = {
@@ -553,6 +564,7 @@
 				7CFCA09526E50DE500A450CF /* GalleryDelegate.swift in Sources */,
 				7CA7BED526D88173003C14CC /* SceneDelegate.swift in Sources */,
 				7CFCA09326E30F2300A450CF /* ScriptCollectionViewCell.swift in Sources */,
+				7CBBF6C126F75480002B47F8 /* Script.swift in Sources */,
 				7CA7BEDC26D8873D003C14CC /* TextFieldTag.swift in Sources */,
 				7CA7BED926D8834B003C14CC /* SignInViewModel.swift in Sources */,
 				7CFCA08A26DDD14400A450CF /* UILoadingButton.swift in Sources */,

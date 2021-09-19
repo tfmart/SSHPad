@@ -8,11 +8,21 @@
 import UIKit
 
 class ScriptCollectionViewCell: UICollectionViewCell {
-    private var label: UILabel!
+    private var nameLabel: UILabel!
+    private var imageView: UIImageView!
     
     var title: String? {
         didSet {
-            label.text = title
+            nameLabel.text = title
+        }
+    }
+    
+    var image: UIImage? {
+        didSet {
+            imageView.image = image
+            if oldValue == nil && image != nil {
+                setupUI()
+            }
         }
     }
     
@@ -33,15 +43,27 @@ class ScriptCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupComponents() {
-        self.label = UILabel()
+        self.nameLabel = UILabel()
+        self.imageView = UIImageView()
         self.layer.cornerRadius = 8.0
-        self.label.translatesAutoresizingMaskIntoConstraints = false
+        self.nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        self.imageView.translatesAutoresizingMaskIntoConstraints = false
     }
     
     private func setupUI() {
-        contentView.addSubview(label)
-        label.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        contentView.addSubview(imageView)
+        contentView.addSubview(nameLabel)
+        if image != nil {
+            imageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+            nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 4).isActive = true
+            nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        } else {
+            nameLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+            nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        }
     }
     
     private func toggleAnimation() {

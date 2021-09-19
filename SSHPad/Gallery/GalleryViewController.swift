@@ -106,9 +106,10 @@ extension GalleryViewController: UICollectionViewDataSource, UICollectionViewDel
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "script", for: indexPath) as! ScriptCollectionViewCell
-        cell.title = viewModel.script(for: indexPath.row)
+        cell.title = viewModel.script(for: indexPath.row)?.fileName
         cell.backgroundColor = UIColor.orange
         if #available(iOS 13.4, *) {
+            cell.image = UIImage(systemName: "star.fill")
             viewModel.customPointerInteraction(on: cell, pointerInteractionDelegate: viewModel)
         }
         return cell
