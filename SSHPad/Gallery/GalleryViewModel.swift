@@ -85,3 +85,26 @@ extension GalleryViewModel {
         return try? KeychainWrapper.read(from: "password")
     }
 }
+
+// MARK: - Pointer Interaction
+@available(iOS 13.4, *)
+extension GalleryViewModel: UIPointerInteractionDelegate {
+    func customPointerInteraction(on view: UIView, pointerInteractionDelegate:
+                                  UIPointerInteractionDelegate){
+        let pointerInteraction = UIPointerInteraction(delegate:
+                                                        pointerInteractionDelegate)
+        view.addInteraction(pointerInteraction)
+    }
+    
+    func pointerInteraction(_ interaction: UIPointerInteraction, styleFor region:
+                            UIPointerRegion) -> UIPointerStyle? {
+        var pointerStyle: UIPointerStyle?
+        
+        if let interactionView = interaction.view {
+            let targetedPreview = UITargetedPreview(view: interactionView)
+            pointerStyle = UIPointerStyle(effect:
+                                            UIPointerEffect.highlight(targetedPreview))
+        }
+        return pointerStyle
+    }
+}

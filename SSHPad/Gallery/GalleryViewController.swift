@@ -105,14 +105,16 @@ extension GalleryViewController: UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "script", for: indexPath) as? ScriptCollectionViewCell
-        cell!.title = viewModel.script(for: indexPath.row)
-        cell!.backgroundColor = UIColor.orange
-        return cell!
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "script", for: indexPath) as! ScriptCollectionViewCell
+        cell.title = viewModel.script(for: indexPath.row)
+        cell.backgroundColor = UIColor.orange
+        if #available(iOS 13.4, *) {
+            viewModel.customPointerInteraction(on: cell, pointerInteractionDelegate: viewModel)
+        }
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.didSelect(at: indexPath.row)
     }
 }
-
