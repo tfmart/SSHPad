@@ -45,6 +45,7 @@ class ScriptCollectionViewCell: UICollectionViewCell {
     private func setupComponents() {
         self.nameLabel = UILabel()
         self.imageView = UIImageView()
+        self.imageView.contentMode = .scaleAspectFill
         self.layer.cornerRadius = 8.0
         self.nameLabel.translatesAutoresizingMaskIntoConstraints = false
         self.imageView.translatesAutoresizingMaskIntoConstraints = false

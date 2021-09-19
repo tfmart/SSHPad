@@ -82,6 +82,9 @@ class GalleryViewController: UIViewController {
         self.scriptsCollectionView.dataSource = self
         self.scriptsCollectionView.delegate = self
         self.scriptsCollectionView.register(ScriptCollectionViewCell.self, forCellWithReuseIdentifier: "script")
+        if #available(iOS 13.0, *) { } else {
+            scriptsCollectionView.addGestureRecognizer(longPress)
+        }
         if #available(iOS 11.0, *) {
             scriptsCollectionView?.contentInsetAdjustmentBehavior = .always
         }
@@ -99,6 +102,7 @@ class GalleryViewController: UIViewController {
     }
 }
 
+//MARK: - Collection View methods
 extension GalleryViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.amount
@@ -117,5 +121,36 @@ extension GalleryViewController: UICollectionViewDataSource, UICollectionViewDel
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         viewModel.didSelect(at: indexPath.row)
+    }
+    
+    @available(iOS 13.0, *)
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        return UIContextMenuConfiguration(identifier: nil,
+                                          previewProvider: nil) { actions in
+            return UIMenu(title: "Edit script", children: self.viewModel.menuActions)
+        }
+    }
+}
+
+//MARK: - Long gesture for iOS <13
+extension GalleryViewController: UIGestureRecognizerDelegate {
+    var longPress: UILongPressGestureRecognizer {
+        let gesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
+        gesture.delaysTouchesBegan = true
+        gesture.delegate = self
+        return gesture
+    }
+
+    @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
+        if gestureRecognizer.state == UIGestureRecognizer.State.began {
+                let touchPoint = gestureRecognizer.location(in: scriptsCollectionView)
+                if let index = scriptsCollectionView.indexPathForItem(at: touchPoint),
+                   let alertController = viewModel.editAlert(for: index.row) {
+                    let popOverController = alertController.popoverPresentationController
+                    popOverController?.sourceView = scriptsCollectionView.cellForItem(at: index)
+                    popOverController?.sourceRect = scriptsCollectionView.cellForItem(at: index)!.bounds
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
     }
 }

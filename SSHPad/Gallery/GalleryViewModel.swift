@@ -109,3 +109,44 @@ extension GalleryViewModel: UIPointerInteractionDelegate {
         return pointerStyle
     }
 }
+
+// MARK: - Long Press Menus
+extension GalleryViewModel {
+    @available(iOS 13.0, *)
+    var menuActions: [UIAction] {
+        let rename = UIAction(title: "Rename",
+                              image: UIImage(systemName: "pencil")) { action in
+            print("Pressed rename")
+        }
+        
+        let image = UIAction(title: "Add image",
+                             image: UIImage(systemName: "photo")) { action in
+            print("Pressed image")
+        }
+        return [rename, image]
+    }
+    
+    func editAlert(for index: Int) -> UIAlertController? {
+        guard let script = script(for: index) else { return nil }
+        let alertController = UIAlertController(title: "Edit \(script.name)", message: nil, preferredStyle: .actionSheet)
+        let rename = UIAlertAction(title: "Rename", style: .default) { _ in
+            self.renameItem(at: index)
+        }
+        let addIcon = UIAlertAction(title: "Change icon", style: .default) { _ in
+            self.addIcon(at: index)
+        }
+        
+        alertController.addAction(rename)
+        alertController.addAction(addIcon)
+        alertController.modalPresentationStyle = .popover
+        return alertController
+    }
+    
+    @objc func renameItem(at index: Int) {
+        print("Pressed rename")
+    }
+    
+    @objc func addIcon(at index: Int) {
+        print("Pressed icon")
+    }
+}
